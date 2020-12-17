@@ -1,4 +1,4 @@
 # PHPong
 Pong Clone in PHP
 
-##### For now it's only partly done...
+##### PHP isn't optimal for a Pong Clone, but here it is anyway.
