@@ -13,10 +13,13 @@
     require_once( 'class/item.php' );
     require_once( 'class/paddle.php' );
     require_once( 'class/ball.php' );
+
+    session_start();
+
+    // Check Game-session
+    $game = isset($_SESSION[ 'game' ]) ? $_SESSION[ 'game' ] : null;
+
+    // Check if game exists and render
+    if( !is_null($game) ) { $game->render(); }
     
-    // Initiera klasser
-    $game = new Game();
-
-    $game->update();
-
 ?>

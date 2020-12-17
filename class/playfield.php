@@ -5,12 +5,15 @@
      * @author Fredrik Skoglind, 2020
      */
     class Playfield {
+        const PLAYFIELD_WIDTH = 500;
+        const PLAYFIELD_HEIGHT = 500;
+
         private $width;
         private $height;
 
         public function __construct() {
-            $this->width = 500;
-            $this->height = 500;
+            $this->width = self::PLAYFIELD_WIDTH;
+            $this->height = self::PLAYFIELD_HEIGHT;
         }
 
         public function render( ...$items ) {

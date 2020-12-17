@@ -5,14 +5,16 @@
      * @author Fredrik Skoglind, 2020
      */
     class Paddle extends Item {
-        const PADDLE_WIDTH = 100;
-        const PADDLE_HEIGHT = 25;
+        const PADDLE_WIDTH = 25;
+        const PADDLE_HEIGHT = 150;
+        const PADDLE_POS_X = 25;
+        const PADDLE_POS_Y = 175;
 
         public function __construct() {
             $this->setWidth( self::PADDLE_WIDTH );
             $this->setHeight( self::PADDLE_HEIGHT );
-            $this->setPositionX( 50 );
-            $this->setPositionY( 300 );
+            $this->setPositionX( self::PADDLE_POS_X );
+            $this->setPositionY( self::PADDLE_POS_Y );
         }
 
         public function moveY( int $val ) {
