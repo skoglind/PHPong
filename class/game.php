@@ -6,6 +6,7 @@
      */
     class Game {
         const GAME_MAX_UPDATE = 25;
+        const PADDLE_MOVE = 15;
 
         private $paddle;
         private $ball;
@@ -17,6 +18,24 @@
             $this->paddle = new Paddle();
             $this->ball = new Ball();
             $this->lastUpdate = $this->milliseconds();
+        }
+
+        public function movePaddleUp() {
+            $boundTop = 0;
+
+            $this->paddle->moveY( -(self::PADDLE_MOVE) );
+
+            // Check if paddle is within bounds
+            if($this->paddle->getPositionY() < $boundTop) { $this->paddle->setPositionY($boundTop); }
+        }
+
+        public function movePaddleDown() {
+            $boundBottom = $this->playfield->getBounds()['height'];
+
+            $this->paddle->moveY( self::PADDLE_MOVE );
+
+            // Check if paddle is within bounds
+            if($this->paddle->getPositionY() + $this->paddle->getHeight() > $boundBottom) { $this->paddle->setPositionY($boundBottom - $this->paddle->getHeight()); }
         }
 
         public function startGame() {
@@ -41,6 +60,14 @@
                             $this->ball->setSpeedY( rand(-5, 5) );
                         }
                     }
+
+                    // Check if ball is within bounds of field, and bounce
+                    $boundTop = 0;
+                    $boundBottom = $this->playfield->getBounds()['height'];
+                    $boundRight = $this->playfield->getBounds()['width'];
+                    if( $this->ball->getPositionY() <= $boundTop ) { $this->ball->setSpeedY( -($this->ball->getSpeedY()) ); }
+                    if( $this->ball->getPositionY() + $this->ball->getHeight() >= $boundBottom ) { $this->ball->setSpeedY( -($this->ball->getSpeedY()) ); }
+                    if( $this->ball->getPositionX() + $this->ball->getWidth() >= $boundRight ) { $this->ball->setSpeedX( -($this->ball->getSpeedX()) ); }
 
                     // Do game updates
                     $this->ball->update();

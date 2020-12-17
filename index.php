@@ -13,6 +13,10 @@
         <div class="pong_menu">
             <button onclick="loadURL('_update.php?play=1', callbackButton);">Starta</button>
             <button onclick="loadURL('_update.php?reset=1', callbackButton);">Avsluta</button>
+            &nbsp;
+            &nbsp;
+            <button onclick="loadURL('_update.php?key=1', callbackButton);">UPP</button>
+            <button onclick="loadURL('_update.php?key=-1', callbackButton);">NER</button>
         </div>
     </body>
 </html>

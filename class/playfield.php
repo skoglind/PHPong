@@ -16,6 +16,11 @@
             $this->height = self::PLAYFIELD_HEIGHT;
         }
 
+        public function getBounds() : array {
+            return [ 'width'  => $this->width, 
+                     'height' => $this->height ];
+        }
+
         public function render( ...$items ) {
             $z_index = 0;
 

@@ -27,6 +27,7 @@
     // User input
     $playGame = isset( $_GET['play'] ) ? intval($_GET['play']) : 0;
     $resetGame = isset( $_GET['reset'] ) ? intval($_GET['reset']) : 0;
+    $keyPress = isset( $_GET['key'] ) ? intval($_GET['key']) : 0;
 
     // Check if game should be reset
     if($resetGame) { unset($_SESSION[ 'game' ]); }
@@ -36,6 +37,18 @@
 
     // Check if the game should start,
     if( $playGame == 1) { $game->startGame(); }
+
+    // Keypress
+    switch( $keyPress ) {
+        case 1: // UP
+            $game->movePaddleUp();
+            break;
+        case -1: // DOWN
+            $game->movePaddleDown();
+            break;
+        default:
+            // Do Nothing
+    }
 
     // Update game-logic
     $game->update();

@@ -8,4 +8,4 @@
     border-left: solid 10px #AAA;
 }
 .pong_item { position: absolute; background-color: #333; }
-.pong_menu { margin: auto; width: 500px; }
+.pong_menu { margin: auto; padding: 10px 0; width: 500px; }

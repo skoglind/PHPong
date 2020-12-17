@@ -18,12 +18,13 @@
         public function __construct() {
             $this->setWidth( self::BALL_WIDTH );
             $this->setHeight( self::BALL_HEIGHT );
-            $this->resetBall();
+            $this->resetBall( true );
         }
 
-        public function resetBall() {
+        public function resetBall( bool $stopBall = true ) {
             $this->setPositionX( self::BALL_POS_X );
             $this->setPositionY( self::BALL_POS_Y );
+            if( !$stopBall ) { $this->startMovement(); }
         }
 
         public function startMovement() {
@@ -44,8 +45,9 @@
         public function update() {
             $skipUpdate = false;
 
-            if( ($this->getPositionX() + $this->getSpeedX() + $this->getWidth()) < 0 ) {
-                $this->resetBall();
+            // Ball out of play, reset
+            if( ($this->getPositionX() + $this->getSpeedX() + $this->getWidth()) <= 0 ) {
+                $this->resetBall( false );
                 $skipUpdate = true;
             }
 
